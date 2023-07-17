@@ -14,7 +14,6 @@ name: Lint all the codes
 #
 
 on:
-
   workflow_call:
     inputs:
       devops-only:
@@ -26,14 +25,17 @@ on:
         description: A regex to exclude files from linting
         required: false
         type: string
+      javascript-use-prettier:
+        description: Set Javascript Default Style to Prettier and disable standard linter
+        required: false
+        type: boolean
 
 permissions:
-  contents: read            # git permissions to repo pull/push
-  statuses: write           # read/write to repo custom statuses and checks
+  contents: read # git permissions to repo pull/push
+  statuses: write # read/write to repo custom statuses and checks
 
 jobs:
   super-lint:
-
     name: Super-Linter
 
     runs-on: ubuntu-latest
@@ -103,6 +105,20 @@ jobs:
             echo "VALIDATE_RUBY=false";
             echo "VALIDATE_PHP=false";
             echo "VALIDATE_CSHARP=false";
+
+          } >> $GITHUB_ENV
+
+      # Set Javascript Default Style to Prettier and disable standard linter
+      # Default style is "standard"
+      - name: Set Javascript Default Style
+        if: ${{ inputs.javascript-use-prettier == true }}
+        run: |
+          # shellcheck disable=2086
+          {
+            echo "JAVASCRIPT_DEFAULT_STYLE=prettier";
+            echo "VALIDATE_JAVASCRIPT_STANDARD=false";
+
+            echo "Using prettier javascript style and disabling Javascript standard linter"
 
           } >> $GITHUB_ENV
 
