@@ -117,10 +117,8 @@ jobs:
           {
             echo "JAVASCRIPT_DEFAULT_STYLE=prettier";
             echo "VALIDATE_JAVASCRIPT_STANDARD=false";
-
-            echo "Using prettier javascript style and disabling Javascript standard linter"
-
           } >> $GITHUB_ENV
+          echo "Using prettier javascript style and disabling Javascript standard linter"
 
       #############################
       # Run many Linters against changed files on PRs, and ALL files on commit to release branch
