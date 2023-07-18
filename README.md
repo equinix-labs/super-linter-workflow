@@ -1,24 +1,13 @@
-# Super Linter Reusable Workflow Examples
+# Super Linter Reusable Workflow
 
-The GitHub [Super-Linter](https://github.com/marketplace/actions/super-linter) project is a fantastic way to lint all your file types with a single GitHub Actions Workflow. A great way to implement it everywhere is to use GHA's [Reusable Workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows) (see below).
+[![Experimental](https://img.shields.io/badge/Stability-Experimental-red.svg)](https://github.com/equinix-labs/equinix-labs/blob/main/experimental-statement.md#experimental-statement)
 
-[My video walkthrough of this repository](https://youtu.be/aXZgQM8DqXg)
-
-## Features of this custom Super-Linter example
-
-- All the features of [Super-Linter](https://github.com/marketplace/actions/super-linter) in a _Reusable_ Workflow.
-- Bonus: Optionally turn off non-DevOps linters (CSS, JS, HTML, etc.) when you want to ignore code (in my case it's to ignore sample code I stick in DevOps projects).
-- Bonus: I added Job steps to correctly determine which branch to diff files with (in the case of having multiple release branches).
-- Bonus: Lints only changed files on a PR, but lints all files on merge to main (or any release) branch.
-
-## How to reuse this example as a _Reusable_ Workflow
-
-1. Fork this repository for you to customize your linters in a single location for your org/projects.
-2. Add a new workflow to all your other repositories and paste in this YAML to call the central-repos reusable workflow.
+[![GitHub Super-Linter](https://github.com/equinix-labs/metal-action-runner/actions/workflows/superlinter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+This is a fork of [bretfisher/super-linter-workflow](https://github.com/BretFisher/super-linter-workflow), further customized for Equinix Labs needs. Please see Bret's original repo for more information and fork and contribute to share with the community.
 
 ```yaml
 ---
-# template source: https://github.com/bretfisher/super-linter-workflow/blob/main/templates/call-super-linter.yaml
+# template source: https://github.com/equinix-labs/super-linter-workflow/blob/main/templates/call-super-linter.yaml
 name: Lint Code Base
 
 on:
@@ -73,17 +62,6 @@ Option 2: Use Docker to [run the Super-Linter image directly](https://github.com
 
 Option 3: Pick the linter you want to run from Super-Linter, then install it locally to run manually. If you have a linter config, be sure to point the linter to `.github/linters/*`, and also realize that super-linter has default linter configs, that may change the linters behavior inside super-linter, with [templates listed here](https://github.com/github/super-linter/tree/main/TEMPLATES).
 
-## This repository is part of my example DevOps repos on GitHub Actions
+## Support
 
-- [bretfisher/github-actions-templates](https://github.com/BretFisher/github-actions-templates) - Main repository
-- (you are here) [bretfisher/super-linter-workflow](https://github.com/BretFisher/super-linter-workflow) - Reusable linter workflow
-- [bretfisher/docker-build-workflow](https://github.com/BretFisher/docker-build-workflow)- Reusable docker build workflow
-- [bretfisher/docker-ci-automation](https://github.com/BretFisher/docker-ci-automation) - Step by step video and example of a Docker CI workflow
-- [My full list of container examples and tools](https://github.com/bretfisher)
-
-## 🎉🎉🎉 Join my cloud native DevOps community 🎉🎉🎉
-
-- [My Cloud Native DevOps Discord server](https://devops.fan)
-- [My weekly YouTube Live show](https://www.youtube.com/@BretFisher)
-- [My weekly newsletter](https://www.bretfisher.com/newsletter)
-- [My courses and coupons](https://www.bretfisher.com/courses)
+This repository is [Experimental](https://github.com/equinix-labs/equinix-labs/blob/main/experimental-statement.md) meaning that it's based on untested ideas or techniques and not yet established or finalized or involves a radically new and innovative style! This means that support is best effort (at best!) and we strongly encourage you to NOT use this in production.
