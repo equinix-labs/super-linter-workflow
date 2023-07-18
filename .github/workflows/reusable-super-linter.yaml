@@ -151,3 +151,5 @@ jobs:
           # also change schema location to an up-to-date list
           # https://github.com/yannh/kubernetes-json-schema/#kubeval
           KUBERNETES_KUBEVAL_OPTIONS: --ignore-missing-schemas --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
+          # Disable Natural Language Linter
+          VALIDATE_NATURAL_LANGUAGE: false
